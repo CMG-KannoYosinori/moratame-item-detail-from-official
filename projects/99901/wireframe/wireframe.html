@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>99901 サポートミート ワイヤーフレーム</title>
+<style>
+  body { margin: 0; padding: 24px; background: #eceff1; font-family: system-ui, sans-serif; color: #333; }
+  header { max-width: 1100px; margin: 0 auto 24px; }
+  header h1 { font-size: 20px; margin: 0 0 8px; }
+  header p { margin: 4px 0; font-size: 13px; line-height: 1.6; }
+  .legend span { display: inline-block; margin-right: 12px; padding: 2px 8px; border-radius: 4px; font-size: 12px; color: #fff; }
+  .toolbar { margin-top: 8px; font-size: 13px; }
+  .status { padding: 6px 10px; border-radius: 4px; background: #fff; }
+  .status.is-error { background: #ffebee; color: #b71c1c; }
+  .frames { display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start; justify-content: center; }
+  .frame h2 { font-size: 14px; margin: 0 0 8px; text-align: center; }
+  iframe { border: 0; background: #fff; display: block; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+</style>
+</head>
+<body>
+<header>
+  <h1>99901 サポートミート ワイヤーフレーム（工程2）</h1>
+  <p>ブランドサイト: <a href="https://www.yagai.net/brand/supportmeat/" target="_blank">https://www.yagai.net/brand/supportmeat/</a></p>
+  <p>グレーの箱は画像、文字は実際の文言です。色や装飾はまだ入れていません。使うブロックは <code>blocks.md</code> で選んでください。</p>
+  <p><code>blocks.md</code> のチェック・並び順・メモは、このページを開いたときに読み込みます。Live Server なら、<code>blocks.md</code> を保存すると自動で再読み込みされます。</p>
+  <p id="status" class="status">blocks.md を読み込み中…</p>
+  <p class="legend">
+    <span style="background:#c62828">必須</span>
+    <span style="background:#1565c0">おすすめ</span>
+    <span style="background:#757575">任意</span>
+    <span style="background:#fff;color:#999;border:1px dashed #999">使わない（薄く表示）</span>
+    <span style="background:#fff59d;color:#5d4037">メモ</span>
+    <span style="background:#455a64">自動で入る</span>
+  </p>
+  <label class="toolbar"><input type="checkbox" id="toggle-optional" checked> 使わないブロックも薄く表示する</label>
+</header>
+
+<div class="frames">
+  <div class="frame"><h2>PC 640px</h2><iframe id="pc" width="640" title="PC 640px"></iframe></div>
+  <div class="frame"><h2>SP 375px</h2><iframe id="sp" width="375" title="SP 375px"></iframe></div>
+</div>
+
+<template id="lp">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif; color: #626262; font-size: 14px; line-height: 1.625; letter-spacing: .05em; }
+  .lp { max-width: 640px; margin: 0 auto; border: 1px solid #ccc; background: #fff; }
+  .blk { position: relative; border-bottom: 1px dashed #b0bec5; padding: 32px 16px; }
+  .blk.is-unused { opacity: .35; }
+  body.hide-unused .blk.is-unused { display: none; }
+  .memo { position: relative; z-index: 2; margin: 22px 0 8px; padding: 6px 10px; background: #fff59d; color: #5d4037; font: 12px/1.6 system-ui, sans-serif; letter-spacing: 0; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+  .blk[style*="padding:0"] .memo { position: absolute; top: 22px; left: 6px; right: 6px; margin: 0; }
+  .tag { position: absolute; top: 6px; left: 6px; z-index: 2; padding: 1px 6px; border-radius: 3px; font: 11px/1.6 system-ui, sans-serif; color: #fff; letter-spacing: 0; }
+  .tag--req { background: #c62828; } .tag--rec { background: #1565c0; } .tag--opt { background: #757575; } .tag--sys { background: #455a64; }
+  .img { display: flex; align-items: center; justify-content: center; background: #cfd8dc; color: #546e7a; font: 11px/1.4 system-ui, sans-serif; text-align: center; padding: 8px; letter-spacing: 0; align-self: start; min-width: 0; }
+  .h { margin: 0 0 16px; font-size: 18px; font-weight: 700; text-align: center; color: #424242; }
+  .en { display: block; font-size: 12px; color: #9e9e9e; letter-spacing: .2em; }
+  p { margin: 0; }
+  p + p { margin-top: 12px; }
+  .center { text-align: center; }
+  .note { font-size: 11px; line-height: 1.6; padding-left: 1.1em; text-indent: -1.1em; }
+  .grid { display: grid; gap: 12px; }
+  .card { border: 1px solid #b0bec5; border-radius: 12px; padding: 16px; }
+  .card h3 { margin: 0 0 8px; font-size: 15px; color: #424242; }
+  .pill { display: inline-block; padding: 2px 12px; border: 1px solid #90a4ae; border-radius: 100vh; font-size: 12px; }
+  .btn { display: block; max-width: 320px; margin: 16px auto 0; padding: 12px; border: 2px solid #90a4ae; border-radius: 100vh; text-align: center; font-weight: 700; }
+  dl { margin: 12px 0 0; } dt { font-weight: 700; } dd { margin: 0 0 8px; }
+  details { border-top: 1px solid #cfd8dc; padding: 10px 0; } summary { font-weight: 700; cursor: pointer; }
+  .sys { background: #eceff1; }
+  .plus { display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .circle { width: 88px; height: 88px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 12px; background: #cfd8dc; color: #37474f; }
+  .scene { display: grid; grid-template-columns: 120px 1fr; gap: 12px; align-items: center; }
+  .big { font-size: 40px; font-weight: 900; color: #424242; line-height: 1.2; }
+  @media (min-width: 640px) {
+    body { font-size: 16px; }
+    .blk { padding: 48px 32px; }
+    .h { font-size: 26px; }
+    .grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .grid--2 { grid-template-columns: repeat(2, 1fr); }
+    .scene { grid-template-columns: 180px 1fr; }
+    .circle { width: 120px; height: 120px; font-size: 14px; }
+    .big { font-size: 56px; }
+  }
+</style>
+
+<div class="lp">
+
+  <!-- B01 KV -->
+  <section class="blk" style="padding:0">
+    <span class="tag tag--req">B01 KV 必須</span>
+    <div class="img" style="aspect-ratio:1/1">KV 1276&#215;1276<br>「つまむタンパク質。サポートミート」（intro_copy_1・2.svg）<br>＋ 商品写真（main_slide.png から BOX・パウチ・個包装を切り出し）</div>
+  </section>
+
+  <!-- B02 リード -->
+  <section class="blk">
+    <span class="tag tag--rec">B02 リード おすすめ</span>
+    <h2 class="h">しっかりお肉を、超お手軽に。</h2>
+    <p class="center">本物のお肉でタンパク質補給ができる<br>高タンパク質カルパス「サポートミート」<br>時間も場所も選ばない。<br>手軽でおいしく<br>あなたのタンパク質補給をサポートします。</p>
+    <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:16px">
+      <div class="img" style="aspect-ratio:141/239">ilst_1</div><div class="img" style="aspect-ratio:141/239">ilst_2</div><div class="img" style="aspect-ratio:141/239">ilst_3</div><div class="img" style="aspect-ratio:141/239">ilst_4</div>
+    </div>
+  </section>
+
+  <!-- B03 今回お届けする商品 -->
+  <section class="blk">
+    <span class="tag tag--req">B03 今回お届けする商品 必須</span>
+    <h2 class="h">今回お届けする商品</h2>
+    <div class="grid grid--2" style="grid-template-columns:repeat(2,1fr)">
+      <div><div class="img" style="aspect-ratio:1/1">lineup_slide_1<br>サポートミートBOX</div><p class="center">&#215;1</p></div>
+      <div><div class="img" style="aspect-ratio:1/1">lineup_slide_3<br>サポートミートリカバリーBOX</div><p class="center">&#215;1</p></div>
+    </div>
+    <p class="note" style="margin-top:8px">※お届けする商品と個数は仮です。</p>
+  </section>
+
+  <!-- B04 構成図 -->
+  <section class="blk">
+    <span class="tag tag--rec">B04 特徴: 構成図 おすすめ</span>
+    <h2 class="h"><span class="en">Quality</span>サポートミートの特徴</h2>
+    <div class="img" style="aspect-ratio:428/322;max-width:320px;margin:0 auto 16px">sms_img.png 商品写真</div>
+    <div class="plus"><div class="circle">動物性<br>タンパク質</div>＋<div class="circle">植物性<br>タンパク質</div>＋<div class="circle">コラーゲン</div></div>
+  </section>
+
+  <!-- B05 Point1-3 -->
+  <section class="blk">
+    <span class="tag tag--rec">B05 特徴: Point1〜3 おすすめ</span>
+    <div class="grid grid--3">
+      <div class="card"><span class="pill">Point1</span><h3>必須アミノ酸をすべて網羅</h3><p>体内では合成できない9種のアミノ酸をタンパク質と一緒に摂ることができます。</p></div>
+      <div class="card"><span class="pill">Point2</span><h3>2種類のタンパク質を1本に</h3><p>吸収の速い動物性タンパク質と、穏やかな植物性タンパク質を、ダブル配合。</p></div>
+      <div class="card"><span class="pill">Point3</span><h3>不足しがちなタンパク質を補える</h3><p>1日のタンパク質不足量は約6g。6本で1日不足分を補えます。</p></div>
+    </div>
+  </section>
+
+  <!-- B06 あと6g -->
+  <section class="blk">
+    <span class="tag tag--rec">B06 数字で見る「あと6g」 おすすめ</span>
+    <h2 class="h">足りないのは、あと6g。</h2>
+    <div class="grid grid--2" style="align-items:center">
+      <div class="center"><p>1本あたり</p><p class="big">1g</p><p>のタンパク質</p></div>
+      <div class="center"><p>6本で</p><p class="big">6g</p><p>1日の不足分を補える</p></div>
+    </div>
+    <p style="margin-top:16px">6gを食品で補おうとすると、お肉（鶏・豚・牛）約30〜40g、ゆで卵約1個分弱、納豆約1パック弱。サポートミートなら、袋を開けるだけでパクッと補給できます。</p>
+    <p class="note" style="margin-top:8px">※出典：厚生労働省「令和元年 国民健康・栄養調査」</p>
+  </section>
+
+  <!-- B07 国産鶏肉100% -->
+  <section class="blk">
+    <span class="tag tag--opt">B07 国産鶏肉100% 任意</span>
+    <div class="grid grid--2" style="align-items:center">
+      <div class="img" style="aspect-ratio:4/3">colum_img_2_2.png</div>
+      <div><h3 style="margin:0 0 8px;color:#424242">毎日食べるからこそ、国産鶏肉100%</h3><p>サポートミートは土台となる素材に国産鶏肉を100%使用。鶏肉をベースに植物性タンパク質を組み合わせた「ハイブリッドタンパク」です。</p></div>
+    </div>
+  </section>
+
+  <!-- B08 シリーズ -->
+  <section class="blk">
+    <span class="tag tag--rec">B08 シリーズ おすすめ</span>
+    <h2 class="h"><span class="en">Series</span>シリーズ</h2>
+    <p class="center" style="margin-bottom:16px">あなたに合った栄養素を簡単チャージ！</p>
+    <div class="grid grid--2">
+      <div class="card"><div class="img" style="aspect-ratio:991/461">lineup2_img_1.png</div><h3 style="margin-top:12px">サポートミート（亜鉛）</h3><p>亜鉛が摂れるサポートミート。亜鉛には、皮膚や粘膜の健康維持を助ける働きがあります。<sup>※1</sup></p></div>
+      <div class="card"><div class="img" style="aspect-ratio:991/461">lineup2_img_2.png</div><h3 style="margin-top:12px">サポートミート リカバリー（食物繊維）</h3><p>1日不足分の食物繊維が摂れるサポートミート。食物繊維には、腸内環境を維持する働きがあります。<sup>※2</sup></p></div>
+    </div>
+    <p class="note" style="margin-top:8px">※1 6本あたり　※2 12本あたり</p>
+  </section>
+
+  <!-- B09 シーン -->
+  <section class="blk">
+    <span class="tag tag--rec">B09 こんな時におすすめ おすすめ</span>
+    <h2 class="h"><span class="en">Scene</span>こんな時におすすめ</h2>
+    <div class="grid">
+      <div class="scene"><div class="img" style="aspect-ratio:1/1">scene_1</div><div><h3 style="margin:0 0 4px;color:#424242">トレーニングに！</h3><p>シェイカー不要。ほしいときに即タンパクチャージ。</p></div></div>
+      <div class="scene"><div class="img" style="aspect-ratio:1/1">scene_2</div><div><h3 style="margin:0 0 4px;color:#424242">仕事/勉強の合間に！</h3><p>日常のすき間時間に、ながらでパクっとタンパク質。</p></div></div>
+      <div class="scene"><div class="img" style="aspect-ratio:1/1">scene_3</div><div><h3 style="margin:0 0 4px;color:#424242">食事に！</h3><p>時間が無いとき、サッと小腹満たしついでにタンパク質。</p></div></div>
+      <div class="scene"><div class="img" style="aspect-ratio:1/1">scene_4</div><div><h3 style="margin:0 0 4px;color:#424242">おやつに！</h3><p>いつものスナックと置き換えて、おやつを罪悪感ゼロに。</p></div></div>
+      <div class="scene"><div class="img" style="aspect-ratio:1/1">scene_5</div><div><h3 style="margin:0 0 4px;color:#424242">おつまみに！</h3><p>サポートミートがあれば、晩酌タイムがタンパクタイムに。</p></div></div>
+    </div>
+  </section>
+
+  <!-- B10 続けやすさ -->
+  <section class="blk">
+    <span class="tag tag--opt">B10 続けやすさ 任意</span>
+    <h2 class="h">続けやすい、持ち歩ける常温お肉</h2>
+    <div class="grid grid--3">
+      <div class="card center"><h3>常温で約7ヶ月</h3><p>冷蔵・冷凍いらず</p></div>
+      <div class="card center"><h3>真空個包装</h3><p>手を汚さず片手で開けられる</p></div>
+      <div class="card center"><h3>シェーカー不要</h3><p>袋を開けてそのまま</p></div>
+    </div>
+  </section>
+
+  <!-- B11 自社調査 -->
+  <section class="blk">
+    <span class="tag tag--opt">B11 自社調査 任意</span>
+    <p class="center">タンパク質摂取を意識している男女の<br><strong style="font-size:1.3em">約半数</strong>が、既存の商品は<br>「継続しにくい」「手間がかかる」と回答。</p>
+    <p class="note" style="margin-top:8px">※自社調査（調査対象：男女64名／調査時期：2025年／CLT調査）</p>
+  </section>
+
+  <!-- B12 動画 -->
+  <section class="blk">
+    <span class="tag tag--opt">B12 動画 任意</span>
+    <div class="img" style="aspect-ratio:16/9">YouTube 埋め込み（素材なし）</div>
+  </section>
+
+  <!-- B13 ラインナップ -->
+  <section class="blk">
+    <span class="tag tag--req">B13 商品ラインナップ 必須</span>
+    <p class="center" style="margin-bottom:16px">今回お届けする商品はこちら</p>
+    <div class="grid">
+      <div class="card">
+        <h3>サポートミートBOX</h3>
+        <span class="pill">栄養機能食品（亜鉛）</span>
+        <div class="grid grid--2" style="margin-top:12px">
+          <div class="img" style="aspect-ratio:1235/825">lineup_slide_1.png</div>
+          <div><p>お肉でしっかりタンパク質が摂れる高タンパクなカルパスです。動物性タンパク質と植物性タンパク質が摂れ、9種類の必須アミノ酸、コラーゲン、亜鉛も同時に摂取できます。</p>
+            <dl><dt>内容量</dt><dd>標準30本入</dd><dt>タンパク質</dt><dd>1箱30g</dd></dl></div>
+        </div>
+        <p style="margin-top:8px"><strong>アレルギー:</strong> 乳成分・牛肉・大豆・鶏肉・豚肉</p>
+        <details><summary>原材料名</summary><p>鶏肉（国産）、豚脂肪、大豆たんぱく、還元水あめ、乳たんぱく、米たんぱく、食塩、粉末醤油、豚コラーゲン、香辛料、たんぱく加水分解物、麦芽糖／調味料（アミノ酸）、くん液、リン酸塩（Na）、pH調整剤、グルコン酸亜鉛、酸化防止剤（ビタミンC）、発色剤（亜硝酸Na）、（一部に乳成分・牛肉・大豆・鶏肉・豚肉を含む）</p></details>
+        <details><summary>栄養成分 6本（20.4g）当たり</summary><p>エネルギー88kcal、たんぱく質6.2g、脂質6.5g、炭水化物1.3g（糖質1.1g、食物繊維0.2g）、食塩相当量0.7g、亜鉛6.1mg</p></details>
+      </div>
+      <div class="card">
+        <h3>サポートミートリカバリーBOX</h3>
+        <div class="grid grid--2" style="margin-top:12px">
+          <div class="img" style="aspect-ratio:1235/825">lineup_slide_3.png</div>
+          <div><p>お肉でしっかりタンパク質が摂れる高タンパクなカルパスです。9種類の必須アミノ酸、コラーゲン、食物繊維も同時に摂取できます。</p>
+            <dl><dt>内容量</dt><dd>標準30本入</dd><dt>タンパク質</dt><dd>1箱30g（＋食物繊維）</dd></dl></div>
+        </div>
+        <p style="margin-top:8px"><strong>アレルギー:</strong> 乳成分・牛肉・大豆・鶏肉・豚肉</p>
+        <details><summary>原材料名</summary><p>鶏肉（国産）、豚脂肪、還元水あめ、大豆たんぱく、米たんぱく、乳たんぱく、食塩、粉末醤油、豚コラーゲン、香辛料、たんぱく加水分解物／加工デンプン、調味料（アミノ酸）、くん液、リン酸塩（Na）、pH調整剤、酸化防止剤（ビタミンC）、発色剤（亜硝酸Na）、（一部に乳成分・牛肉・大豆・鶏肉・豚肉を含む）</p></details>
+        <details><summary>栄養成分 1箱（108g）当たり</summary><p>エネルギー461kcal、たんぱく質31.4g、脂質32.7g、炭水化物12.9g（糖質7.8g、食物繊維5.1g）、食塩相当量3.6g</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- B14 栄養機能食品の表示 -->
+  <section class="blk">
+    <span class="tag tag--req">B14 栄養機能食品の表示 必須</span>
+    <h3 style="margin:0 0 8px;color:#424242">サポートミートBOX（栄養機能食品（亜鉛））</h3>
+    <p class="note">※亜鉛は、味覚を正常に保つのを助ける栄養素です。亜鉛は、皮膚や粘膜の健康維持を助ける栄養素のひとつです。</p>
+    <p class="note">※摂取目安量：1日6本を目安にお召しあがりください。</p>
+    <p class="note">※1日当たりの摂取目安量の栄養素等表示基準値（2025）（18歳以上、基準熱量2,200kcal）に占める割合 6本の場合 亜鉛72％</p>
+    <p class="note">※摂取上の注意：本品は、多量摂取により疾病が治癒したり、より健康が増進するものではありません。亜鉛の摂り過ぎは、銅の吸収を阻害するおそれがありますので、過剰摂取にならないよう注意してください。1日の摂取目安量を守ってください。乳幼児・小児は本品の摂取を避けてください。</p>
+    <p class="note">※本品は、特定保健用食品と異なり、消費者庁長官による個別審査を受けたものではありません。</p>
+    <p class="note">※本品製造ラインでは、小麦、ゼラチンを含む製品を製造しています。</p>
+  </section>
+
+  <!-- B15 バナー -->
+  <section class="blk">
+    <span class="tag tag--rec">B15 ブランドサイトバナー おすすめ</span>
+    <div class="img" style="aspect-ratio:775/545;max-width:420px;margin:0 auto">f_img.png ＋ f_copy.svg</div>
+    <p class="btn">ブランドサイトはこちら</p>
+  </section>
+
+  <!-- B16 Instagram -->
+  <section class="blk">
+    <span class="tag tag--opt">B16 Instagram 任意</span>
+    <p class="center">公式Instagram @support_meat_jp</p>
+    <p class="btn">Instagramを見る</p>
+  </section>
+
+  <!-- B17 X投稿 -->
+  <section class="blk">
+    <span class="tag tag--rec">B17 X投稿のお願い おすすめ</span>
+    <div class="img" style="aspect-ratio:754/121;max-width:400px;margin:0 auto 12px">リボン「ご当選された方へ」</div>
+    <p class="center">ご当選された際にはモラタメのクチコミ投稿に加えて、ご自身のXアカウントにもぜひご投稿ください。</p>
+    <p class="center" style="margin-top:12px">#PR　#モラタメ_モラ　#サポートミート</p>
+    <p class="btn">ポストする</p>
+  </section>
+
+  <!-- 自動 -->
+  <section class="blk sys">
+    <span class="tag tag--sys">自動 今回タメせる商品</span>
+    <p class="center">（モラタメのシステムが差し込む: include_tpl）</p>
+  </section>
+  <section class="blk sys">
+    <span class="tag tag--sys">自動 送料関係費に関するご注意（通常）</span>
+    <p>・【沖縄・離島】にお住まいの方は別途費用を頂きます。決済前に必ずご注文内容の送料関係費をご確認ください。</p>
+    <p>・お申し込み後のお届け先は変更できません。お届け先ご住所をご確認の上、お申し込みください。</p>
+  </section>
+
+</div>
+</template>
+
+<script>
+  // 閉じタグは <\/ と書く（Live Server などが body の閉じタグの前にスクリプトを差し込み、JS が壊れるのを防ぐ）
+  const tpl = document.getElementById('lp').innerHTML;
+  const frames = [document.getElementById('pc'), document.getElementById('sp')];
+  const toggle = document.getElementById('toggle-optional');
+  const status = document.getElementById('status');
+  const fit = (f) => { f.style.height = f.contentDocument.documentElement.scrollHeight + 'px'; };
+
+  // blocks.md の表から「| [x] | B01 | ... | メモ |」の行を読む。並び順も md のとおり。
+  const parseBlocks = (md) => md.split('\n').map((line) => {
+    const m = line.match(/^\|\s*\[([ xX])\]\s*\|\s*(B\d+)\s*\|(.*)\|\s*$/);
+    if (!m) return null;
+    const cells = m[3].split('|').map((c) => c.trim());
+    return { id: m[2], used: m[1].toLowerCase() === 'x', memo: cells[cells.length - 1] || '' };
+  }).filter(Boolean);
+
+  // 読めないとき（file:// で開いた場合など）は、最初のおすすめ（任意以外を使う）で表示する
+  const fallback = (doc) => [...doc.querySelectorAll('.blk')].map((el) => {
+    const t = el.querySelector('.tag'); const m = t && t.textContent.match(/^B\d+/);
+    return m ? { id: m[0], used: !t.classList.contains('tag--opt'), memo: '' } : null;
+  }).filter(Boolean);
+
+  const apply = (f, blocks) => {
+    const doc = f.contentDocument;
+    const lp = doc.querySelector('.lp');
+    const byId = {};
+    doc.querySelectorAll('.blk').forEach((el) => {
+      const t = el.querySelector('.tag'); const m = t && t.textContent.match(/^B\d+/);
+      if (m) byId[m[0]] = el;
+    });
+    const firstSys = lp.querySelector('.blk.sys');
+    blocks.forEach((b) => {
+      const el = byId[b.id]; if (!el) return;
+      el.classList.toggle('is-unused', !b.used);
+      el.querySelectorAll('.memo').forEach((n) => n.remove());
+      if (b.memo) {
+        const n = doc.createElement('div'); n.className = 'memo'; n.textContent = 'メモ: ' + b.memo;
+        el.querySelector('.tag').after(n);
+      }
+      lp.insertBefore(el, firstSys); // md の順に並べ直す（自動で入るブロックは最後のまま）
+    });
+    doc.body.classList.toggle('hide-unused', !toggle.checked);
+    fit(f);
+  };
+
+  const mdPromise = fetch('blocks.md', { cache: 'no-store' })
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(parseBlocks)
+    .catch(() => null);
+
+  frames.forEach((f) => {
+    f.srcdoc = '<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><\/head><body>' + tpl + '<\/body><\/html>';
+    f.addEventListener('load', async () => {
+      const parsed = await mdPromise;
+      const blocks = parsed && parsed.length ? parsed : fallback(f.contentDocument);
+      apply(f, blocks);
+      f.contentDocument.querySelectorAll('details').forEach((d) => d.addEventListener('toggle', () => fit(f)));
+      if (f.id === 'pc') {
+        if (parsed && parsed.length) {
+          const used = parsed.filter((b) => b.used).map((b) => b.id);
+          status.textContent = 'blocks.md を読み込みました（' + new Date().toLocaleTimeString() + '）。使うブロック ' + used.length + '個: ' + used.join(' → ');
+        } else {
+          status.textContent = 'blocks.md を読み込めませんでした。最初のおすすめで表示しています。Live Server などのローカルサーバーで開いてください（ファイルを直接開くと読み込めません）。';
+          status.classList.add('is-error');
+        }
+      }
+    });
+  });
+
+  toggle.addEventListener('change', () => {
+    frames.forEach((f) => { f.contentDocument.body.classList.toggle('hide-unused', !toggle.checked); fit(f); });
+  });
+</script>
+</body>
+</html>
