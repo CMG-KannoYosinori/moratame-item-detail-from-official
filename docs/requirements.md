@@ -217,6 +217,8 @@ projects/{案件番号}/
 
 ## 10. 実装の方針
 
+チームメンバーに使ってもらうまでの段階と準備は [team-rollout.md](./team-rollout.md) にまとめた。
+
 ### 10.1 実行環境: Claude Code のスキル
 
 エージェントは、Claude Code のプロジェクトスキル（`.claude/skills/`）として作る。
