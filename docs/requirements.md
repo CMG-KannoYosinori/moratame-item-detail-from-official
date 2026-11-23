@@ -247,3 +247,4 @@
 - このリポジトリを新しく clone するときは `git clone --recursive` を使う（または clone の後に `git submodule update --init`）。
 - テンプレートの中身はこのリポジトリでは編集しない。直すときはテンプレートのリポジトリ側で直す。
 - 案件を始めるときは、テンプレートの `00000html/` を `projects/{案件番号}/` にコピーして使う。
+- 詳しい手順は [submodule.md](./submodule.md) にまとめた。
