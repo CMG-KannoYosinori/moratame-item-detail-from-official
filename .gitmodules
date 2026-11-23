@@ -1,0 +1,3 @@
+[submodule "references/moratame/item-details-template"]
+	path = references/moratame/item-details-template
+	url = git@github.com-excrie:CMG-KannoYosinori/item-details-template.git
