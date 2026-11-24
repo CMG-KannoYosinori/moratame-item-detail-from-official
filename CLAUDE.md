@@ -14,8 +14,10 @@
 | `figma-comp` | 工程3: Figma のデザインカンプ |
 | `moratame-html` | 工程4・5: HTML と確認 |
 | `lp-revise` | 工程6: HTML を作った後の修正（メーカーからの戻しなど。何回でも） |
+| `lp-feedback` | このツールへのフィードバックを `feedback/` に残す（「フィードバック: 〜」と言われたとき） |
+| `feedback-triage` | （管理者用、zip に入らない）集めたフィードバックを整理して直す |
 
-人向けの使い方は [docs/manual.md](docs/manual.md)、修正の流れは [docs/revision-flow.md](docs/revision-flow.md)。
+人向けの使い方は [docs/manual.md](docs/manual.md)、修正の流れは [docs/revision-flow.md](docs/revision-flow.md)、フィードバックの流れは [docs/feedback-flow.md](docs/feedback-flow.md)。
 
 ## まず読むもの
 
