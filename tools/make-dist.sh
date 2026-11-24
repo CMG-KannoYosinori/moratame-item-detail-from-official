@@ -36,11 +36,11 @@ git archive --format=tar --prefix="${name}/" "$ref" | tar -x -C "$work"
 dir="$work/$name"
 
 # 配らないもの
-rm -rf "$dir/projects" "$dir/build"
+rm -rf "$dir/projects" "$dir/build" "$dir/feedback" "$dir/.claude/skills/feedback-triage"
 rm -f "$dir/.gitignore" \
       "$dir/.claude/rules/git-commit.md" \
-      "$dir/docs/admin.md" "$dir/docs/team-rollout.md" \
-      "$dir/tools/make-dist.sh" "$dir/tools/update-template.sh"
+      "$dir/docs/admin.md" "$dir/docs/team-rollout.md" "$dir/docs/feedback-log.md" \
+      "$dir/tools/make-dist.sh" "$dir/tools/update-template.sh" "$dir/tools/collect-feedback.sh"
 rm -rf "$dir/tools/git-hooks"
 
 # スタッフの作業場所（空）と進み具合の記録
@@ -54,6 +54,14 @@ cat > "$dir/projects/progress.md" <<'EOF'
 |---|---|---|---|
 
 （まだ案件はありません）
+EOF
+
+# フィードバックの置き場所（空）
+mkdir -p "$dir/feedback"
+cat > "$dir/feedback/README.md" <<'EOF'
+# フィードバック
+
+Claude に「フィードバック: 〇〇」と言うと、ここにメモが1件できます。流れは docs/feedback-flow.md を見てください。
 EOF
 
 # 版の番号
