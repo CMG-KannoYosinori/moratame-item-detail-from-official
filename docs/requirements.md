@@ -109,7 +109,7 @@
 
 ## 5. 成果物の形（テンプレート `item-details-template` に準拠）
 
-テンプレート: [references/moratame/item-details-template/](../references/moratame/item-details-template/)。案件ではその中の `00000html/` だけをコピーして使い、`00000` を案件番号に一括置換する。
+テンプレート: [template/00000html/dist/](../template/00000html/dist/)（[item-details-template](https://github.com/CMG-KannoYosinori/item-details-template) から写したもの。取り込み元は [template/SOURCE.md](../template/SOURCE.md)）。案件ではこの `dist/` を `projects/{案件番号}/dist/` にコピーして使い、`00000` を案件番号に一括置換する。**SCSS は使わず、CSS だけで運用する。**
 
 ### 5.1 フォルダ構成
 
@@ -121,12 +121,10 @@ projects/{案件番号}/
 │   ├── {案件番号}.html
 │   ├── images/
 │   ├── scripts/accordion.2.js  # アコーディオンを使うときだけ
-│   └── styles/style.css        # SCSSのコンパイル結果（直接編集しない）
-└── src/styles/                 # SCSS（Modern BEM）
-    ├── style.scss              # 入口
-    ├── foundation/  layout/  blocks/
-    └── pages/_project.scss     # 案件専用のスタイルはここだけに書く
+│   └── styles/style.css        # テンプレートの CSS ＋ 最後に案件専用の CSS
 ```
+
+`style.css` は、テンプレートのコンパイル済み CSS をそのまま写したもの。案件のスタイルは、ファイルの最後に「案件専用ここから」の区切りのコメントを置き、その下に書く（区切りより上は編集しない）。公開時に CDN へ上げるのも、この1ファイル。
 
 ### 5.2 HTMLの構造
 
@@ -152,7 +150,7 @@ projects/{案件番号}/
 ### 5.3 外枠とレスポンシブ
 
 - `.p{案件番号}` に `max-width: 640px`、`.p{案件番号}-main` に `border: 1px solid #ccc`（`box-sizing: border-box`）。**1pxのボーダーはHTML側で付くので、カンプの中身は638px。**
-- 切り替え幅は640px。SCSSでは `@media (width >= 640px)` をセレクタの中に入れ子にして書く。
+- 切り替え幅は640px。SP を基本に書き、PC は同じセレクタのすぐ下に `@media (width >= 640px)` で書く（入れ子は使わない）。
 - 基本の文字サイズはSP 14px、PC 16px。基本フォントは游ゴシック系。Google Fontsの Noto Sans JP / Noto Serif JP / M PLUS Rounded 1c は読み込み済み。
 
 ### 5.4 公開時のファイルの置き場所
@@ -166,16 +164,16 @@ projects/{案件番号}/
 
 ### 5.5 コーディング規約
 
-ルールの正は [references/moratame/item-details-template/.cursor/rules/](../references/moratame/item-details-template/.cursor/rules/)。エージェントは作業のたびにここを読む（`.claude/rules/` も同じ内容）。主な内容は次のとおり。
+ルールは [.claude/rules/](../.claude/rules/)（`projects/` の HTML・CSS を扱うときに自動で読み込まれる）。item-details-template のルールをもとに、CSS で運用する形・SP 375px に書き直した。主な内容は次のとおり。
 
 
 - **文字コード:** ファイルは UTF-8 で保存し、`<meta charset>` は書かない。埋め込み先は Shift_JIS のCMS（モラタメ）と UTF-8 のCMS（シェアフル）の両方。
 - **記号:** ®、×、〜、① などは数値文字参照（`&#174;` など）で書く。`&reg;` のような名前付きの実体参照は使わない。CSSの `content` ではUnicodeエスケープを使う。
 - **命名:** クラス名には `p{案件番号}-` を付けた Modern BEM。孫要素（`__a__b`）は作らない。ある部品を親の部品から直接上書きしない。
-- **案件専用のCSS:** `pages/_project.scss` の `.p{案件番号}-project` とその `__` 要素だけに書く。共通部品（`blocks/`）を案件のために書き換えない。
+- **案件専用のCSS:** `style.css` の最後の区切りより下に、`.p{案件番号}-project` とその `__` 要素だけを書く。テンプレートの部品の CSS を案件のために書き換えない。
 - **リンク:** jQuery Mobile 対策で `data-role="none"` を付ける（テンプレートの例に合わせる）。
 - **カンプに忠実に:** カンプにない要素や文言は足さない。
-- **コミット:** gitmojiを付け、意味ごとに分ける。
+- **コミット:** git で管理しているとき（管理者）は、gitmojiを付け、意味ごとに分ける。
 
 ## 6. 品質・制約
 
@@ -211,7 +209,7 @@ projects/{案件番号}/
 | # | 資料 | 状況 |
 |---|---|---|
 | 1 | 商品概要のHTMLテンプレート | ✅ `item-details-template`（`00000html/dist/00000.html`） |
-| 2 | 案件ごとのCSSテンプレートとSCSS | ✅ 同上（`00000html/src/styles/`） |
+| 2 | 案件ごとのCSSテンプレートとSCSS | ✅ 同上。このリポジトリではコンパイル済みの CSS だけを使う（SCSS は使わない） |
 | 3 | 共通CSSの扱い | ✅ テンプレートで読み込む2ファイル |
 | 4 | 作る範囲の線引き | ✅ ほぼ判明（`include_tpl` と注意書きはシステム側・選択式）。注意書きの選び方は要確認 |
 | 5 | 入稿ルール（画像の命名・サイズ上限・形式、使えないタグ・JS） | ⬜ 未提出（置き場所だけテンプレートから判明） |
@@ -219,7 +217,7 @@ projects/{案件番号}/
 | 7 | 過去の良い制作例 | ✅ 4件（1節）。形式の参考にとどめる |
 | 8 | 掲載の決まり事・NG表現のリスト | ⬜ 未提出 |
 | 9 | 原稿の雛形 | 🔺 HTMLテンプレートの項目（内容量、価格、原材料名、栄養成分、アレルギー）で代用できる |
-| — | コーディングのルール | ✅ テンプレートの `.cursor/rules/` |
+| — | コーディングのルール | ✅ テンプレートの `.claude/rules/` をもとに、このリポジトリの `.claude/rules/` に書き直した |
 | 10 | 最初に試す1案件分の実データ | ⬜ 未提出 |
 
 ## 9. 未確定事項
@@ -232,7 +230,8 @@ projects/{案件番号}/
 - [x] ~~Figmaの作業ファイル~~ → エージェントが毎回聞く。
 - [x] ~~Figmaの前の工程~~ → コンテンツ整理とワイヤーフレームを挟み、人がブロックを選ぶ。
 - [x] ~~エージェントの実行環境~~ → Claude Code のスキルとして作る（10節）。
-- [x] ~~テンプレートの持ち方~~ → サブモジュールにした（10節）。
+- [x] ~~テンプレートの持ち方~~ → 最初はサブモジュールにしたが、スタッフに zip で配るため、必要な部分をこのリポジトリに写す形に変えた（10.2節）。
+- [x] ~~CSS の書き方~~ → SCSS をやめ、CSS だけで運用する（5.1節）。
 
 ## 10. 実装の方針
 
@@ -240,7 +239,7 @@ projects/{案件番号}/
 
 ### 10.1 実行環境: Claude Code のスキル
 
-エージェントは、Claude Code のプロジェクトスキル（`.claude/skills/`）として作る。
+エージェントは、Claude Code のプロジェクトスキル（`.claude/skills/`）として作る。**作成済み**（2026-11-24）。工程4・5の `moratame-html` は、まだ実案件で通していないので、1件目で見直す。人向けの使い方は [manual.md](./manual.md)。
 
 理由:
 - Figmaとの接続（Figma MCP）が Claude Code ですでに使える。
@@ -249,7 +248,7 @@ projects/{案件番号}/
 
 自動で何件も回したくなったら、そのときに Agent SDK へ移す。
 
-スキルの構成（案）:
+スキルの構成:
 
 | スキル | 担当する工程 |
 |---|---|
@@ -261,11 +260,29 @@ projects/{案件番号}/
 
 案件ごとの作業フォルダは `projects/{案件番号}/` に置く。中身は5.1節の構成。
 
-### 10.2 テンプレート: サブモジュール
+共通の道具（`tools/`）:
 
-`references/moratame/item-details-template/` は、Gitのサブモジュールとして登録する。テンプレートが更新されたら、`git submodule update --remote` で取り込める。
+| ファイル | 役割 |
+|---|---|
+| `tools/wireframe/template.html`・`blocks.template.md` | 新しい案件のワイヤーフレームと `blocks.md` のひな形 |
+| `tools/wireframe/wireframe.js`・`wireframe.css`・`frame.css` | ワイヤーフレームの見た目と動き（全案件で共通） |
+| `tools/wireframe-server.py` | ワイヤーフレームの表示と `blocks.md` への保存 |
+| `tools/figma-upload.sh` | 素材を Figma に上げる |
+| `.claude/skills/figma-comp/helpers.js` | Figma でカンプを組むときの共通の関数 |
 
-- このリポジトリを新しく clone するときは `git clone --recursive` を使う（または clone の後に `git submodule update --init`）。
-- テンプレートの中身はこのリポジトリでは編集しない。直すときはテンプレートのリポジトリ側で直す。
-- 案件を始めるときは、テンプレートの `00000html/` の中身（`dist/` と `src/`）を `projects/{案件番号}/` にコピーして使う。
-- 詳しい手順は [submodule.md](./submodule.md) にまとめた。
+### 10.2 テンプレート: このリポジトリに写す
+
+テンプレートは [item-details-template](https://github.com/CMG-KannoYosinori/item-details-template) から、案件で使う部分（`00000html/dist/` と README）だけを `template/` に写して持つ。最初はサブモジュールにしていたが、スタッフに zip で配る運用にしたため変えた。
+
+- `template/` はこのリポジトリでは編集しない。直すときは item-details-template で直し、管理者が `tools/update-template.sh` で取り込み直す（取り込み元のコミットは [template/SOURCE.md](../template/SOURCE.md) に記録する）。
+- ルールは `.claude/rules/` に、CSS で運用する形に書き直して持つ。取り込み元のルールが変わったら、管理者が差分を見て手で反映する。
+- 案件を始めるときは、`template/00000html/dist/` を `projects/{案件番号}/dist/` にコピーして使う。
+
+### 10.3 配り方: zip
+
+スタッフには git を使わせない。管理者（このリポジトリを git で管理する人）が zip を作って配り、スタッフは解凍したフォルダを Claude のアプリで開いて使う。
+
+- zip は `tools/make-dist.sh` で作る。管理者の案件（`projects/` の中身）、`.git`、管理者向けの文書・ルールは入れない。版の番号（`VERSION`）を入れる。
+- スタッフの作業は `projects/` の中だけに残る（進み具合の記録 `projects/progress.md` も含む）。新しい版を配ったら、スタッフは古いフォルダの `projects/` を新しいフォルダに移す。
+- 作業はスタッフの PC にしか残らないので、案件が終わったら `projects/{案件番号}/` を決められた共有の場所に置いてもらう。
+- 手順は、スタッフ向けが [manual.md](./manual.md)、管理者向けが [admin.md](./admin.md)。
