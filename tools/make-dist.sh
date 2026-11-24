@@ -72,6 +72,8 @@ EOF
 mkdir -p "$root/build"
 out="$root/build/${name}.zip"
 rm -f "$out"
-(cd "$work" && zip -qr -X "$out" "$name" -x '*.DS_Store')
+# zip の一番上にフォルダを作らない（Mac のダブルクリックも Windows の「すべて展開」も、zip の名前のフォルダを1つ作って展開するため。
+# 一番上にフォルダがあると、Windows ではフォルダが二重になる）
+(cd "$dir" && zip -qr -X "$out" . -x '*.DS_Store')
 echo "作りました: $out"
 echo "版: ${date} (${commit})"
