@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>{{案件番号}} {{商品名}} ワイヤーフレーム</title>
+<link rel="stylesheet" href="../../../tools/wireframe/wireframe.css">
+</head>
+<body>
+<!--
+  ワイヤーフレームのひな形。projects/{案件番号}/wireframe/wireframe.html にコピーして使う。
+  - {{ }} の部分を置き換え、<template id="lp"> の中にブロックを並べる。
+  - ブロックは <section class="blk"> の先頭に <span class="tag tag--種類">B01 名前 種類</span> を置く。
+    種類: tag--req（必須）/ tag--rec（おすすめ）/ tag--opt（任意）/ tag--sys（自動で入る。ID は付けない）
+  - 商品ラインナップの各商品は <div class="card prod" data-product="P1" data-default="対象|紹介|載せない"> にし、
+    商品名の上に <p class="try">今回試せる商品</p> を置く（対象のときだけ表示される）。並べる枠には class="prods" を付ける。
+  - 使える部品のクラスは tools/wireframe/frame.css を参照（.img .h .en .card .pill .btn .note .grid--2 .grid--3 など）。
+  - 案件だけの見た目が必要なら、<template> の先頭に <style> を置いてよい。
+  - このファイルにインラインの <script> は書かない（共通の wireframe.js が動かす）。
+-->
+<header>
+  <h1>{{案件番号}} {{商品名}} ワイヤーフレーム（工程2）</h1>
+  <p>ブランドサイト: <a href="{{ブランドサイトURL}}" target="_blank">{{ブランドサイトURL}}</a></p>
+  <p>グレーの箱は画像、文字は実際の文言です。色や装飾はまだ入れていません。</p>
+  <p><strong>選び方:</strong> 各ブロックの左上のチェックで「使う / 使わない」を切り替えます。商品ラインナップでは、商品ごとに「対象（今回試せる）/ 紹介のみ / 載せない」を選べます。<strong>↑ ↓</strong> で並び順を変え、<strong>メモ</strong> で文言の直しや指示を書けます。終わったら「blocks.md に保存」を押してください（<kbd>⌘</kbd>+<kbd>S</kbd> でも保存できます）。必須のブロックを外すときは、メモに理由を書いてください。</p>
+  <p class="legend">
+    <span style="background:#c62828">必須</span>
+    <span style="background:#1565c0">おすすめ</span>
+    <span style="background:#757575">任意</span>
+    <span style="background:#fff;color:#999;border:1px dashed #999">使わない（薄く表示）</span>
+    <span style="background:#fff59d;color:#5d4037">メモ</span>
+    <span style="background:#455a64">自動で入る</span>
+  </p>
+</header>
+
+<!-- 画面の上に固定する操作バー -->
+<div class="bar">
+  <p id="status" class="status">blocks.md を読み込み中…</p>
+  <div class="toolbar">
+    <button type="button" id="save" disabled>blocks.md に保存</button>
+    <button type="button" id="copy" hidden>選んだ結果をコピー</button>
+    <span id="dirty" class="dirty"></span>
+    <label><input type="checkbox" id="toggle-optional" checked> 使わないブロックも薄く表示する</label>
+  </div>
+  <textarea id="out" readonly hidden></textarea>
+</div>
+
+<div class="frames">
+  <div class="frame"><h2>PC 640px</h2><iframe id="pc" width="640" title="PC 640px"></iframe></div>
+  <div class="frame"><h2>SP 375px</h2><iframe id="sp" width="375" title="SP 375px"></iframe></div>
+</div>
+
+<template id="lp">
+<div class="lp">
+
+  <!-- B01 KV（例） -->
+  <section class="blk" style="padding:0">
+    <span class="tag tag--req">B01 KV 必須</span>
+    <div class="img" style="aspect-ratio:1/1">KV 1276&#215;1276<br>（使う素材のファイル名）</div>
+  </section>
+
+  <!-- B02 セクションの例 -->
+  <section class="blk">
+    <span class="tag tag--rec">B02 （ブロック名） おすすめ</span>
+    <h2 class="h"><span class="en">English</span>見出し</h2>
+    <p>本文はブランドサイトの文言をそのまま置く。</p>
+  </section>
+
+  <!-- B03 カードを並べる例 -->
+  <section class="blk">
+    <span class="tag tag--opt">B03 （ブロック名） 任意</span>
+    <div class="grid grid--3">
+      <div class="card"><h3>見出し</h3><p>本文</p></div>
+      <div class="card"><h3>見出し</h3><p>本文</p></div>
+      <div class="card"><h3>見出し</h3><p>本文</p></div>
+    </div>
+  </section>
+
+  <!-- B04 商品ラインナップ（商品の区分は blocks.md の「商品」の表で決める） -->
+  <section class="blk">
+    <span class="tag tag--req">B04 商品ラインナップ 必須</span>
+    <h2 class="h"><span class="en">Lineup</span>商品ラインナップ</h2>
+    <div class="grid prods" style="gap:24px">
+      <div class="card prod" data-product="P1" data-default="対象">
+        <p class="try">今回試せる商品</p>
+        <h3>（商品名）</h3>
+        <div class="grid grid--2" style="margin-top:12px">
+          <div class="img" style="aspect-ratio:4/3">（商品画像のファイル名）</div>
+          <div><p>（商品の説明）</p>
+            <dl><dt>内容量</dt><dd>（内容量）</dd></dl></div>
+        </div>
+        <p style="margin-top:8px"><strong>アレルギー:</strong> （アレルギー）</p>
+        <details><summary>原材料名</summary><p>（原材料名）</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 自動で入るもの（最後に置く。ID は付けない） -->
+  <section class="blk sys">
+    <span class="tag tag--sys">自動 今回タメせる商品</span>
+    <p class="center">（モラタメのシステムが差し込む: include_tpl）</p>
+  </section>
+  <section class="blk sys">
+    <span class="tag tag--sys">自動 送料関係費に関するご注意（{{配送の条件}}）</span>
+    <p>（テンプレートの注意書きをそのまま入れる）</p>
+  </section>
+
+</div>
+</template>
+
+<script src="../../../tools/wireframe/wireframe.js"></script>
+</body>
+</html>
