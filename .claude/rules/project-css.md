@@ -16,23 +16,24 @@ paths:
 ```
 
 - 書いてよいのは `.p{案件番号}-project` と、その Element（`.p{案件番号}-project__名前`）・Modifier だけ。
+- セレクタはテンプレートの CSS と同じく、先頭に `.p{案件番号} ` を付ける（`.p15403 .p15403-project__feature`）。テンプレートの `.p15403 img` などより強くするため。
 - テンプレートの部品（`.p{案件番号}-line-up` など）を案件の見た目のために上書きしない。親から子の部品を直接いじらない（`.p{案件番号}-project .p{案件番号}-button` は不可）。余白や配置は `project__` の Element に持たせる。
 - 孫要素（`__a__b`）は作らない。要素名はフラットにする（`.p{案件番号}-project__point-title`）。
 - 入れ子（CSS Nesting）は使わず、平らに書く。
 - SP を基本に書き、PC はテンプレートと同じ書き方の `@media (width >= 640px)` で、同じセレクタのすぐ下に書く（ファイルの最後にまとめない）。
 
 ```css
-.p15403-project__feature {
+.p15403 .p15403-project__feature {
   padding: 20px 12px 8px;
 }
 
 @media (width >= 640px) {
-  .p15403-project__feature {
+  .p15403 .p15403-project__feature {
     padding: 28px 24px 12px;
   }
 }
 
-.p15403-project__feature-heading {
+.p15403 .p15403-project__feature-heading {
   text-align: center;
 }
 ```
