@@ -36,7 +36,7 @@
 ### zip に入らないもの
 
 - `projects/` の中身（管理者の案件）。代わりに空の `projects/progress.md` が入る
-- `.git`、`.gitignore`、`build/`
+- `.git`、`.gitignore`、`build/`、`README.md`（リポジトリの説明。スタッフ向けは manual.md）
 - `.claude/rules/git-commit.md`（スタッフは git を使わない）
 - `docs/admin.md`（この文書）、`docs/team-rollout.md`、`docs/feedback-log.md`
 - `feedback/`（このリポジトリで集めたフィードバック。zip には空の `feedback/` が入る）、`.claude/skills/feedback-triage/`

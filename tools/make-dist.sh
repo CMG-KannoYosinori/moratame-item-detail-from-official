@@ -37,7 +37,7 @@ dir="$work/$name"
 
 # 配らないもの
 rm -rf "$dir/projects" "$dir/build" "$dir/feedback" "$dir/.claude/skills/feedback-triage"
-rm -f "$dir/.gitignore" \
+rm -f "$dir/.gitignore" "$dir/README.md" \
       "$dir/.claude/rules/git-commit.md" \
       "$dir/docs/admin.md" "$dir/docs/team-rollout.md" "$dir/docs/feedback-log.md" \
       "$dir/tools/make-dist.sh" "$dir/tools/update-template.sh" "$dir/tools/collect-feedback.sh"
