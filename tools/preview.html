@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>幅を決めてプレビュー</title>
+<style>
+  body { margin: 0; background: #ccc; }
+  iframe { display: block; border: 0; background: #fff; }
+</style>
+</head>
+<body>
+<!--
+  HTML を決めた幅で表示する（Chrome のウィンドウは約500px より狭くできないため、SP の幅の確認に使う）。
+  使い方: tools/wireframe-server.py を起動して、次のように開く。
+    http://127.0.0.1:8000/tools/preview.html?src=/projects/99901/dist/99901.html&w=375
+  headless Chrome で撮るときは、ウィンドウの幅を w 以上、高さをページより大きくする。
+-->
+<iframe id="f" title="プレビュー"></iframe>
+<script src="preview.js"></script>
+</body>
+</html>

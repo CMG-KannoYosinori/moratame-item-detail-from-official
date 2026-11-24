@@ -47,6 +47,7 @@
 
 - ワイヤーフレームの見た目と動きは共通の `tools/wireframe/`（`wireframe.js`・`wireframe.css`・`frame.css`）が受け持つ。新しい案件は `tools/wireframe/template.html` と `blocks.template.md` から作る。
 - ワイヤーフレームは `python3 tools/wireframe-server.py` を起動し、表示された URL（`http://127.0.0.1:8000/...`）で開く。画面で選んだ内容を `blocks.md` に保存できる。
+- HTML（`dist/`）も同じサーバーで開く。SP の幅で見るときは `tools/preview.html?src=/projects/{案件番号}/dist/{案件番号}.html&w=375`（Chrome のウィンドウは約500px より狭くできないため）。
 - ユーザーは VS Code の Live Server（ポート5500）を使うこともある。Live Server は最初の `</body>` の前にスクリプトを差し込むので、インラインのJSに閉じタグを文字どおり書かない（`<\/body>` と書く）。
 
 ## Figma
