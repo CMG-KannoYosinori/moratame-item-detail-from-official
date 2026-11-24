@@ -11,14 +11,9 @@
 
 ## zip を作って配る
 
-1. 直したものをコミットする（zip は最後のコミットの内容から作る）。
-2. 次を実行する。
-
-   ```sh
-   bash tools/make-dist.sh
-   ```
-
-   `build/moratame-lp-{日付}.zip` ができる。中のフォルダ名も `moratame-lp-{日付}` になる。
+1. 直したものをコミットする。**コミットのたびに、配る zip が自動で作り直される**（`build/moratame-lp-{日付}.zip`。中のフォルダ名も `moratame-lp-{日付}`）。zip は最後のコミットの内容から作られ、同じ日のものは上書きされる。
+   - 自動で作られないときは、手で `bash tools/make-dist.sh` を実行する。
+   - コミットしていない変更も含めて試しに作るときは `bash tools/make-dist.sh --working-tree`。
 3. 配る前に試す。
    - zip を解凍し、そのフォルダを Claude のアプリの Code で開く。
    - `/moratame-lp` と入力し、工程0の質問が出ることを確かめる。
@@ -31,9 +26,19 @@
 - `.git`、`.gitignore`、`build/`
 - `.claude/rules/git-commit.md`（スタッフは git を使わない）
 - `docs/admin.md`（この文書）、`docs/team-rollout.md`
-- `tools/make-dist.sh`、`tools/update-template.sh`
+- `tools/make-dist.sh`、`tools/update-template.sh`、`tools/git-hooks/`
 
 入れるものを変えたいときは `tools/make-dist.sh` を直す。
+
+### 自動で作る設定
+
+コミットのたびに zip を作るのは、git のフック（`tools/git-hooks/post-commit`）。このリポジトリを clone し直したときは、一度だけ次を実行して有効にする。
+
+```sh
+git config core.hooksPath tools/git-hooks
+```
+
+止めたいときは `git config --unset core.hooksPath`。フックは zip には入らない。
 
 ## テンプレートを取り込み直す
 

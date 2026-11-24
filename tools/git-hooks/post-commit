@@ -1,0 +1,12 @@
+#!/bin/bash
+# コミットのたびに、スタッフに配る zip（build/moratame-lp-{日付}.zip）を作り直す（管理者用）。
+# 有効にする: git config core.hooksPath tools/git-hooks
+# 失敗してもコミットには影響しない。
+root="$(git rev-parse --show-toplevel)"
+if out=$(bash "$root/tools/make-dist.sh" 2>&1); then
+  echo "[post-commit] 配る zip を作り直しました: $(echo "$out" | sed -n 's/^作りました: //p')"
+else
+  echo "[post-commit] 配る zip を作れませんでした:"
+  echo "$out" | sed 's/^/  /'
+fi
+exit 0

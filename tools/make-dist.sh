@@ -41,6 +41,7 @@ rm -f "$dir/.gitignore" \
       "$dir/.claude/rules/git-commit.md" \
       "$dir/docs/admin.md" "$dir/docs/team-rollout.md" \
       "$dir/tools/make-dist.sh" "$dir/tools/update-template.sh"
+rm -rf "$dir/tools/git-hooks"
 
 # スタッフの作業場所（空）と進み具合の記録
 mkdir -p "$dir/projects"
