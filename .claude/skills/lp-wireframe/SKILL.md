@@ -35,7 +35,7 @@ description: モラタメLPづくりの工程2。content.md からブロック�
 
 ## 4. 人に選んでもらう
 
-1. `python3 tools/wireframe-server.py` を Bash の `run_in_background` で起動する（ポートが使用中なら別の番号を渡す）。
+1. `python3 tools/wireframe-server.py`（Windows では `python`）を Bash の `run_in_background` で起動する（ポートが使用中なら別の番号を渡す）。
 2. `http://127.0.0.1:8000/projects/{案件番号}/wireframe/wireframe.html` を伝え、次を説明する。
    - チェックで使う/使わない、↑↓で並べ替え、メモで指示、商品カードの右上で区分を選ぶ
    - 終わったら「blocks.md に保存」を押して、会話で知らせてほしい

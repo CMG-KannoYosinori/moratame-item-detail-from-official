@@ -63,15 +63,12 @@ description: モラタメLPづくりの工程4・5。承認されたデザイン
 
 ## 工程5: 確認
 
-1. **表示:** `python3 tools/wireframe-server.py` を起動し、`http://127.0.0.1:8000/projects/{案件番号}/dist/{案件番号}.html` で開く（このサーバーは `charset=utf-8` を付けて返すので、`<meta charset>` がなくても文字化けしない）。
-   - Google Chrome があれば headless でスクリーンショットを撮って見る。**Chrome のウィンドウは約500px より狭くできない**ので、SP の幅は `tools/preview.html` の iframe で決める。
+1. **表示:** `python3 tools/wireframe-server.py`（Windows では `python`）を起動し、`http://127.0.0.1:8000/projects/{案件番号}/dist/{案件番号}.html` で開く（このサーバーは `charset=utf-8` を付けて返すので、`<meta charset>` がなくても文字化けしない）。
+   - スクリーンショットは `tools/screenshot.py` で撮る（Chrome、なければ Edge を自動で探す。Mac・Windows どちらでも動き、Pillow も要らない）。
      ```sh
-     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
-       --user-data-dir=/tmp/{案件番号}_chrome --window-size=800,9000 --virtual-time-budget=8000 \
-       --screenshot=/tmp/{案件番号}_w375.png \
-       "http://127.0.0.1:8000/tools/preview.html?src=/projects/{案件番号}/dist/{案件番号}.html&w=375"
+     python3 tools/screenshot.py /projects/{案件番号}/dist/{案件番号}.html            # Windows では python
      ```
-     幅 640・375・320 で撮る。縦に長いので、Python（Pillow があれば）で切るか、`--window-size` の高さを変えて数回に分けて撮る。
+     幅 640・375・320 で、縦 1300px ずつの画像に分けて保存し、ファイルの一覧を出すので、Read で見る。SP の幅は `tools/preview.html` の iframe で決めている（Chrome のウィンドウは約500px より狭くできないため）。
    - 横にはみ出していないかは、`w=320` で右端が切れていないかで見る。
    - Chrome がなければ、人に URL を開いてもらい、ブラウザの幅を変えて見てもらう。
 2. **カンプとの比較:** `design/{案件番号}-pc.png`・`-sp.png` と並べて、文言・改行・色・余白・角丸・画像の位置を比べる。
