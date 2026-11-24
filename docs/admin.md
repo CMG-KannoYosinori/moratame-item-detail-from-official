@@ -105,5 +105,7 @@ Claude に頼んで直してもらってよい（このリポジトリを開い�
 - Claude のアプリ（Code が使えるプラン）と、Figma をつないだ Claude のアカウント
 - Google Drive for desktop（Finder で `共有ドライブ/design2/MOD_design/モラタメ商品概要LP_AIエージェント制作` が見えること）
 - Figma の編集できるアカウント（Figma のプランによっては、Claude から Figma を操作できる回数に上限がある）
-- Mac の Python 3（最初に使うときに「コマンドライン・デベロッパ・ツール」のインストールを求められることがある。その場合は入れてもらう）
-- Google Chrome（あれば、HTML の確認で Claude が画面を撮れる。なくても、ブラウザで開いて目で確認すれば進められる）
+- Python 3（Mac は最初から入っている。最初に使うときに「コマンドライン・デベロッパ・ツール」のインストールを求められることがある。Windows は python.org から入れ、「Add python.exe to PATH」にチェックを入れる）
+- Windows のみ: Git for Windows（Claude Code がコマンドを動かすのに使う。スタッフが git を操作するわけではない）
+- Google Chrome または Microsoft Edge（HTML の確認で Claude が画面を撮る。Windows には Edge が最初から入っている）
+- Windows で試せていないことがあるので、最初の Windows のスタッフには、管理者がそばで一度通して確かめる
