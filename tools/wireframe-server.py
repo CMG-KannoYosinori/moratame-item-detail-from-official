@@ -26,6 +26,16 @@ MAX_BYTES = 512 * 1024
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
+    # 埋め込み用の HTML には <meta charset> を書かないので、プレビューでは文字コードをヘッダで伝える
+    extensions_map = {
+        **http.server.SimpleHTTPRequestHandler.extensions_map,
+        ".html": "text/html; charset=utf-8",
+        ".css": "text/css; charset=utf-8",
+        ".js": "text/javascript; charset=utf-8",
+        ".md": "text/markdown; charset=utf-8",
+        ".svg": "image/svg+xml",
+    }
+
     def end_headers(self):
         # 常に最新のファイルを返す。ページ側はこのヘッダーで「保存できるサーバー」か判断する。
         self.send_header("Cache-Control", "no-store")
