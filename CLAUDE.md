@@ -12,9 +12,10 @@
 | `brand-content` | 工程1: コンテンツ整理 |
 | `lp-wireframe` | 工程2: ワイヤーフレームとブロックの選択 |
 | `figma-comp` | 工程3: Figma のデザインカンプ |
-| `moratame-html` | 工程4・5: HTML と確認（まだ実案件で通していない） |
+| `moratame-html` | 工程4・5: HTML と確認 |
+| `lp-revise` | 工程6: HTML を作った後の修正（メーカーからの戻しなど。何回でも） |
 
-人向けの使い方は [docs/manual.md](docs/manual.md)。
+人向けの使い方は [docs/manual.md](docs/manual.md)、修正の流れは [docs/revision-flow.md](docs/revision-flow.md)。
 
 ## まず読むもの
 
@@ -33,6 +34,7 @@
 | 3 | Figma に PC 640px / SP 375px のカンプを作る | ✅ 承認 |
 | 4 | テンプレートからHTMLを作る | — |
 | 5 | 確認 | ✅ |
+| 6 | 修正対応（メーカーからの戻しなど。何回でも）。受け取ったファイルと直す前の版を `revisions/round-N/` に残し、blocks.md・カンプ・HTML をそろえて直し、`changes.md` に記録 | ✅ |
 
 ## 決まりごと
 
