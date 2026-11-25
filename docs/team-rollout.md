@@ -80,7 +80,7 @@
 | テンプレートの持ち方 | サブモジュールをやめ、必要な部分を `template/` に写す。SCSS をやめ CSS だけで運用する | 済（`template/SOURCE.md`、`tools/update-template.sh`） |
 | 配る zip | 管理者の案件・`.git`・管理者向けの文書を外した zip を作る | 済（`tools/make-dist.sh`） |
 | メンバーのPC | Mac・Windows。Claude アプリ、Figma のアカウントと connector の接続、Google Drive for desktop、Python（Windows は python.org から）、Windows は Git for Windows。Chrome か Edge | 未着手（必要なものは [admin.md](./admin.md) と [manual.md](./manual.md) に書いた）。**Windows では実機で未確認** |
-| 共有の場所 | Google Drive の `共有ドライブ/design2/MOD_design/モラタメ商品概要LP_AIエージェント制作`。`01_エージェント最新版/` に最新の zip、`02_案件ごとの作業フォルダ/` に案件ごとの作業フォルダ（`始めた年月_案件番号_商品名`） | 済（フォルダ作成済み） |
+| 共有の場所 | Google Drive の `共有ドライブ/design2/MOD_design/モラタメ商品概要LP_AIエージェント制作`。`01_エージェント最新版/` に最新の zip、`02_案件ごとの作業フォルダ/` に案件ごとの作業フォルダ（`案件番号_商品名`） | 済（フォルダ作成済み） |
 | 手順書 | メンバー向けに1枚。スクリーンショット中心の「はじめてガイド」 | 文章版を作成（[manual.md](./manual.md)）。スクリーンショットはまだ |
 
 ## 6. あとで考えること
@@ -101,5 +101,6 @@
 | 2026-11-24 | メンバーは git を使わず、管理者が zip で配る運用に変更。テンプレートをサブモジュールからこのリポジトリに写す形に変え、SCSS をやめて CSS だけで運用する |
 | 2026-11-24 | HTML の後にメーカーからの修正が何度も入る前提で、工程6（修正対応、`lp-revise`）を追加 |
 | 2026-11-24 | 管理者もスタッフも配った版で実際に使い、フィードバックを `feedback/` に残して管理者が集約する流れを追加（`lp-feedback`、`feedback-triage`） |
+| 2026-11-25 | 案件フォルダの名前の決まり（`案件番号_商品名`、空白・記号・商品名の中の `_` を使わない）を追加。始めるときに Claude が名前を確かめ、違っていれば直した名前を提案する |
 | 2026-11-24 | Windows のスタッフもいるため、Mac だけのコマンドをやめ、Python の標準の機能だけで動く道具（`image_size.py`・`doc_text.py`・`screenshot.py`）に置き換えた。zip の一番上のフォルダをなくした（Windows の「すべて展開」で二重にならないように） |
 | 2026-11-24 | 配る版は管理者が Google Drive の `01_エージェント最新版/` に手動で置き、案件ごとに最新版を `02_案件ごとの作業フォルダ/` に展開して使う運用に決定（1案件1フォルダ・1人）。フィードバックは `tools/collect-feedback.sh` で集める |

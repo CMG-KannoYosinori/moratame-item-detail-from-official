@@ -56,7 +56,7 @@ python3 tools/wireframe-server.py
 Google Drive: 共有ドライブ/design2/MOD_design/モラタメ商品概要LP_AIエージェント制作/
   ├── 01_エージェント最新版/        最新の zip（前のものは 過去の版/ へ）
   └── 02_案件ごとの作業フォルダ/    案件ごとに最新の zip を展開して使う（1案件1フォルダ・1人）
-        └── 202611_99902_牛乳石鹸AKA/
+        └── 99902_牛乳石鹸AKA/
 ```
 
 - スタッフは git を使いません。案件を始めるたびに最新の zip を展開し、フォルダを Claude のアプリで開いて使います（[docs/manual.md](docs/manual.md)）。

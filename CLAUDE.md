@@ -67,7 +67,7 @@
 | HTML のスクリーンショット | `tools/screenshot.py`（Chrome、なければ Edge を自動で探す。Pillow は要らない） |
 | プレビューのサーバー | `tools/wireframe-server.py` |
 
-ファイル名・フォルダ名には、空白と `/ \ : * ? " < > |` を使わない（Windows で使えないため）。
+ファイル名・フォルダ名には、空白と `/ \ : * ? " < > |` を使わない（Windows で使えないため）。案件フォルダの名前は `案件番号_商品名`（決まりは docs/manual.md の「案件フォルダの名前の決まり」）。Claude が作るファイル名（画像など）は、半角の英小文字・数字・`-` にする（例: `product-box.png`）。
 
 ## Figma
 
