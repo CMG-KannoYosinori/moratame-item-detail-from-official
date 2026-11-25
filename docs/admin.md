@@ -84,7 +84,7 @@ Claude に頼んで直してもらってよい（このリポジトリを開い�
 
 流れは [feedback-flow.md](feedback-flow.md)。
 
-1. 各案件フォルダの `feedback/` から、このリポジトリの `feedback/inbox/` に集める。
+1. 各案件フォルダの `feedback/` から、このリポジトリの `feedback/inbox/` に集める。Claude に「フィードバックを集めて」と頼めば、Drive の場所を探して次のコマンドを実行してくれる。自分で実行するときは:
 
    ```sh
    bash tools/collect-feedback.sh "$HOME/Library/CloudStorage/GoogleDrive-（会社のアカウント）/共有ドライブ/design2/MOD_design/モラタメ商品概要LP_AIエージェント制作/02_案件ごとの作業フォルダ"
