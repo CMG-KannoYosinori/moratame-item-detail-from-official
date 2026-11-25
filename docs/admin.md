@@ -1,6 +1,6 @@
 # 管理者向けの手順
 
-スタッフに配るフォルダ（zip）の作り方と、テンプレート・スキルの更新のしかた。この文書は配る zip には入らない。
+スタッフに配るフォルダ（zip）の作り方と、テンプレート・スキルの更新のしかた。この文書は配る zip には入らない。操作の順番だけを見たいときは [admin-quickstart.md](admin-quickstart.md)。
 
 ## Google Drive のフォルダ
 
@@ -38,7 +38,7 @@
 - `projects/` の中身（管理者の案件）。代わりに空の `projects/progress.md` が入る
 - `.git`、`.gitignore`、`build/`、`README.md`（リポジトリの説明。スタッフ向けは manual.md）
 - `.claude/rules/git-commit.md`（スタッフは git を使わない）
-- `docs/admin.md`（この文書）、`docs/team-rollout.md`、`docs/feedback-log.md`
+- `docs/admin.md`（この文書）、`docs/admin-quickstart.md`、`docs/team-rollout.md`、`docs/feedback-log.md`
 - `feedback/`（このリポジトリで集めたフィードバック。zip には空の `feedback/` が入る）、`.claude/skills/feedback-triage/`
 - `tools/make-dist.sh`、`tools/update-template.sh`、`tools/collect-feedback.sh`、`tools/git-hooks/`
 

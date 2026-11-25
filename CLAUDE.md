@@ -17,7 +17,7 @@
 | `lp-feedback` | このツールへのフィードバックを `feedback/` に残す（「フィードバック: 〜」と言われたとき） |
 | `feedback-triage` | （管理者用、zip に入らない）集めたフィードバックを整理して直す |
 
-人向けの使い方は [docs/manual.md](docs/manual.md)、修正の流れは [docs/revision-flow.md](docs/revision-flow.md)、フィードバックの流れは [docs/feedback-flow.md](docs/feedback-flow.md)。
+人向けの使い方は [docs/manual.md](docs/manual.md)（簡単マニュアルは [docs/quickstart.md](docs/quickstart.md)、管理者向けは docs/admin-quickstart.md）、修正の流れは [docs/revision-flow.md](docs/revision-flow.md)、フィードバックの流れは [docs/feedback-flow.md](docs/feedback-flow.md)。
 
 ## まず読むもの
 

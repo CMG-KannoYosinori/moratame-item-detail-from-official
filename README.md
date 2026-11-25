@@ -63,7 +63,7 @@ Google Drive: 共有ドライブ/design2/MOD_design/モラタメ商品概要LP_A
 - 配布用の zip には、`projects/` の中身、`.git`、管理者向けの文書・スキル・道具は入りません（`tools/make-dist.sh`）。
 - 使った人のフィードバックは各案件フォルダの `feedback/` に残り、管理者が `tools/collect-feedback.sh` で集めて整理します（[docs/feedback-flow.md](docs/feedback-flow.md)）。
 
-くわしい手順は [docs/admin.md](docs/admin.md)。
+操作の順番は [docs/admin-quickstart.md](docs/admin-quickstart.md)、くわしい手順は [docs/admin.md](docs/admin.md)。
 
 ## フォルダ構成
 
@@ -75,9 +75,11 @@ Google Drive: 共有ドライブ/design2/MOD_design/モラタメ商品概要LP_A
 │   └── rules/                コーディングのルール（文字参照、charset、案件の CSS、Modern BEM、カンプの確認、コミット）
 ├── docs/
 │   ├── requirements.md       要件と工程の決まり（作業の正）
+│   ├── quickstart.md         使う人向けの簡単マニュアル（操作の順番だけ）
 │   ├── manual.md             使う人向けのマニュアル
 │   ├── revision-flow.md      修正の流れ（工程6）
 │   ├── feedback-flow.md      フィードバックの流れ
+│   ├── admin-quickstart.md   管理者向けの簡単マニュアル（配布しない）
 │   ├── admin.md              管理者向けの手順（配布しない）
 │   ├── team-rollout.md       チームで使うまでのプラン（配布しない）
 │   └── feedback-log.md       フィードバックの記録（配布しない）
