@@ -1,5 +1,5 @@
 #!/bin/bash
-# コミットのたびに、スタッフに配る zip（build/moratame-lp-{日付}.zip）を作り直す（管理者用）。
+# コミットのたびに、スタッフに配る zip（build/moratame-lp-{年月日時分}.zip）を作り直す（管理者用）。
 # 有効にする: git config core.hooksPath tools/git-hooks
 # 失敗してもコミットには影響しない。
 root="$(git rev-parse --show-toplevel)"

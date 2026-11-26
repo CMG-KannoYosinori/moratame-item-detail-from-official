@@ -51,7 +51,7 @@ python3 tools/wireframe-server.py
 
 ```
 このリポジトリ（管理者の PC）
-  ↓ commit（git のフックで build/moratame-lp-{日付}.zip ができる）
+  ↓ commit（git のフックで build/moratame-lp-{年月日時分}.zip ができる）
   ↓ 管理者が手動で置く
 Google Drive: 共有ドライブ/design2/MOD_design/モラタメ商品概要LP_AIエージェント制作/
   ├── 01_エージェント最新版/        最新の zip（前のものは 過去の版/ へ）

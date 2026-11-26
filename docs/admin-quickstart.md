@@ -17,11 +17,11 @@ git config core.hooksPath tools/git-hooks   # コミットのたびに配る zip
 ## 2. スキルやマニュアルを直す
 
 1. このリポジトリを Claude Code で開き、直したいことを言葉で頼む（例:「工程2の候補に〇〇も出して」）。
-2. 直ったら `commit` と入力する。意味ごとにコミットされ、`build/moratame-lp-日付.zip` が自動で作り直される。
+2. 直ったら `commit` と入力する。意味ごとにコミットされ、`build/moratame-lp-年月日時分.zip` が自動で作り直される。
 
 ## 3. 新しい版を配る
 
-1. 試す: `build/moratame-lp-日付.zip` を解凍し、Claude のアプリの Code で開いて `/moratame-lp` と入力。工程0の質問が出て、`VERSION` に日付とコミットが入っていれば OK。
+1. 試す: `build/moratame-lp-年月日時分.zip` を解凍し、Claude のアプリの Code で開いて `/moratame-lp` と入力。工程0の質問が出て、`VERSION` に日時とコミットが入っていれば OK。
 2. 置く: Drive の `01_エージェント最新版/` にある前の zip を `過去の版/` に移し、新しい zip を置く（最新の1つだけにする）。
 3. 知らせる: 版（`VERSION`）と変わったことをスタッフに伝える。作業中の案件は前の版のまま続けてよい、と添える。
 

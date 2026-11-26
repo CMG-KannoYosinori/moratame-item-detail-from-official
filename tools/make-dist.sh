@@ -6,13 +6,13 @@
 #   bash tools/make-dist.sh --working-tree  # コミットしていない変更も含めて試しに作る
 #
 # 管理者の案件（projects/ の中身）、.git、管理者向けの文書・ルール・道具は入れない。
-# できた zip は build/ に置く。
+# できた zip は build/moratame-lp-{年月日時分}.zip（コミットした日時の12桁）。build/ には新しい5つだけ残す。
 set -eu
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
 
-date=$(date +%Y%m%d)
 if [ "${1:-}" = "--working-tree" ]; then
+  stamp=$(date +%Y%m%d%H%M)
   # 今の作業中のファイルから一時的なツリーを作る（インデックスやコミットは変えない）
   tmpidx=$(mktemp)
   GIT_INDEX_FILE="$tmpidx" git read-tree HEAD
@@ -26,8 +26,10 @@ else
   fi
   ref=HEAD
   commit=$(git log -1 --format='%h')
+  # 版の番号はコミットした日時（年月日時分の12桁）。同じコミットから作り直すと同じ名前になる
+  stamp=$(git log -1 --format='%cd' --date=format-local:%Y%m%d%H%M)
 fi
-name="moratame-lp-${date}"
+name="moratame-lp-${stamp}"
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
 
@@ -66,7 +68,7 @@ EOF
 
 # 版の番号
 cat > "$dir/VERSION" <<EOF
-${date} (${commit})
+${stamp} (${commit})
 EOF
 
 mkdir -p "$root/build"
@@ -76,4 +78,7 @@ rm -f "$out"
 # 一番上にフォルダがあると、Windows ではフォルダが二重になる）
 (cd "$dir" && zip -qr -X "$out" . -x '*.DS_Store')
 echo "作りました: $out"
-echo "版: ${date} (${commit})"
+echo "版: ${stamp} (${commit})"
+
+# build/ には新しい5つだけ残す
+ls -1 "$root/build"/moratame-lp-*.zip 2>/dev/null | sort | sed -e :a -e '$d;N;2,5ba' -e 'P;D' | while read -r f; do rm -f "$f"; done
