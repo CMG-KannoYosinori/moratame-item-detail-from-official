@@ -34,6 +34,7 @@ Node.js・npm・Pillow などは要りません（CSS は SCSS を使わずに�
 git clone <このリポジトリ>
 cd moratame-item-detail-from-official
 git config core.hooksPath tools/git-hooks   # コミットのたびに配布用の zip を作り直す
+git config moratame.distDir "<Drive の 01_エージェント最新版 のフォルダ>"   # できた zip を Drive に自動で置く（docs/admin.md）
 ```
 
 このフォルダを Claude Code で開き、`/moratame-lp` と入力すると始まります。`projects/` は練習・見本の案件の置き場所です（`99901` サポートミート）。
@@ -52,7 +53,7 @@ python3 tools/wireframe-server.py
 ```
 このリポジトリ（管理者の PC）
   ↓ commit（git のフックで build/moratame-lp-{年月日時分}.zip ができる）
-  ↓ 管理者が手動で置く
+  ↓ 自動で置く（tools/publish-dist.sh。前の zip は 過去の版/ へ）
 Google Drive: 共有ドライブ/design2/MOD_design/モラタメ商品概要LP_AIエージェント制作/
   ├── 01_エージェント最新版/        最新の zip（前のものは 過去の版/ へ）
   └── 02_案件ごとの作業フォルダ/    案件ごとに最新の zip を展開して使う（1案件1フォルダ・1人）
@@ -93,6 +94,7 @@ Google Drive: 共有ドライブ/design2/MOD_design/モラタメ商品概要LP_A
 │   ├── doc_text.py           Word・Excel・PowerPoint の文字を取り出す
 │   ├── figma-upload.sh       素材を Figma に上げる
 │   ├── make-dist.sh          配布用の zip を作る（配布しない）
+│   ├── publish-dist.sh       できた zip を Google Drive に置く（配布しない）
 │   ├── collect-feedback.sh   各案件フォルダのフィードバックを集める（配布しない）
 │   ├── update-template.sh    テンプレートを取り込み直す（配布しない）
 │   └── git-hooks/            コミットのたびに zip を作るフック（配布しない）

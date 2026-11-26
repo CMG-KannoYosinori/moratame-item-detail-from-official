@@ -10,6 +10,7 @@ Google Drive の場所: `共有ドライブ/design2/MOD_design/モラタメ商�
 git clone <このリポジトリ>
 cd moratame-item-detail-from-official
 git config core.hooksPath tools/git-hooks   # コミットのたびに配る zip を作り直す
+git config moratame.distDir "$HOME/Library/CloudStorage/GoogleDrive-（会社のアカウント）/共有ドライブ/design2/MOD_design/モラタメ商品概要LP_AIエージェント制作/01_エージェント最新版"   # できた zip を Drive に自動で置く
 ```
 
 リポジトリは手元の PC に置きます（Google Drive には置かない）。
@@ -17,15 +18,14 @@ git config core.hooksPath tools/git-hooks   # コミットのたびに配る zip
 ## 2. スキルやマニュアルを直す
 
 1. このリポジトリを Claude Code で開き、直したいことを言葉で頼む（例:「工程2の候補に〇〇も出して」）。
-2. 直ったら `commit` と入力する。意味ごとにコミットされ、`build/moratame-lp-年月日時分.zip` が自動で作り直される。
+2. 直ったら `commit` と入力する。意味ごとにコミットされ、`build/moratame-lp-年月日時分.zip` が自動で作り直されて、Drive の `01_エージェント最新版/` に置かれる（前の zip は `過去の版/` へ）。**コミットするとすぐスタッフに見える**ので、試しの途中ではコミットしない。
 
 ## 3. 新しい版を配る
 
-1. 試す: `build/moratame-lp-年月日時分.zip` を解凍し、Claude のアプリの Code で開いて `/moratame-lp` と入力。工程0の質問が出て、`VERSION` に日時とコミットが入っていれば OK。
-2. 置く: Drive の `01_エージェント最新版/` にある前の zip を `過去の版/` に移し、新しい zip を置く（最新の1つだけにする）。
-3. 知らせる: 版（`VERSION`）と変わったことをスタッフに伝える。作業中の案件は前の版のまま続けてよい、と添える。
+1. 確かめる: Drive の `01_エージェント最新版/` に新しい zip が1つだけあることを見る。解凍して Claude のアプリの Code で開き、`/moratame-lp` で工程0の質問が出て、`VERSION` に日時とコミットが入っていれば OK。
+2. 知らせる: 版（`VERSION`）と変わったことをスタッフに伝える。作業中の案件は前の版のまま続けてよい、と添える。
 
-zip が自動で作られなかったときは `bash tools/make-dist.sh`。
+zip が作られなかったときは `bash tools/make-dist.sh`、Drive に置かれなかったとき（Drive が開いていなかったなど）は `bash tools/publish-dist.sh`。
 
 ## 4. フィードバックを集めて直す
 
@@ -36,7 +36,7 @@ zip が自動で作られなかったときは `bash tools/make-dist.sh`。
    ```
 2. 「フィードバックを整理して」と頼む。一覧と対応案が出る。
 3. 直すものを決めて伝える（「全部おすすめどおりで」でもよい）。Claude が直し、`docs/feedback-log.md` に記録して、メモを `feedback/done/` に移す。
-4. `commit` → 3 の手順で配る。Claude が作る知らせの文の案を使う。
+4. `commit`（Drive に置かれる）→ 3 の手順で知らせる。Claude が作る知らせの文の案を使う。
 
 ## 5. テンプレートを取り込み直す
 
@@ -46,7 +46,7 @@ item-details-template が更新されたら:
 bash tools/update-template.sh ~/git-repositories/github-cmg/item-details-template
 ```
 
-表示される差分を見て、`.claude/rules/` に必要な直しがあれば頼む。`commit` → 3 の手順で配る。
+表示される差分を見て、`.claude/rules/` に必要な直しがあれば頼む。`commit`（Drive に置かれる）→ 3 の手順で知らせる。
 
 ## 6. 自分で案件を作るとき
 

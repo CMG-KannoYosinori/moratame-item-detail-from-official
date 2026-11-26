@@ -1,10 +1,19 @@
 #!/bin/bash
 # コミットのたびに、スタッフに配る zip（build/moratame-lp-{年月日時分}.zip）を作り直す（管理者用）。
+# 置き場所（git config moratame.distDir）が設定されていれば、Google Drive の 01_エージェント最新版/ にも置く。
 # 有効にする: git config core.hooksPath tools/git-hooks
 # 失敗してもコミットには影響しない。
 root="$(git rev-parse --show-toplevel)"
 if out=$(bash "$root/tools/make-dist.sh" 2>&1); then
   echo "[post-commit] 配る zip を作り直しました: $(echo "$out" | sed -n 's/^作りました: //p')"
+  if [ -n "$(git config --get moratame.distDir)" ]; then
+    if pub=$(bash "$root/tools/publish-dist.sh" 2>&1); then
+      echo "$pub" | sed 's/^/[post-commit] /'
+    else
+      echo "[post-commit] Google Drive に置けませんでした:"
+      echo "$pub" | sed 's/^/  /'
+    fi
+  fi
 else
   echo "[post-commit] 配る zip を作れませんでした:"
   echo "$out" | sed 's/^/  /'

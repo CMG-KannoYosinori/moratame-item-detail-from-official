@@ -26,11 +26,11 @@
 1. 直したものをコミットする。**コミットのたびに、配る zip が自動で作り直される**（`build/moratame-lp-{年月日時分}.zip`。名前の12桁はコミットした日時。展開すると `moratame-lp-{年月日時分}` のフォルダが1つできる。zip の一番上にはフォルダを作らない。Windows の「すべて展開」でフォルダが二重にならないようにするため）。zip は最後のコミットの内容から作られる。コミットごとに名前が変わるので、同じ日に何度配っても見分けられる。`build/` には新しい5つだけが残る。
    - 自動で作られないときは、手で `bash tools/make-dist.sh` を実行する。
    - コミットしていない変更も含めて試しに作るときは `bash tools/make-dist.sh --working-tree`。
-2. 配る前に試す。
+2. 試す（自動で置く設定のときは、置かれた後に試すことになる。問題があれば直してまたコミットする）。
    - zip を解凍し、そのフォルダを Claude のアプリの Code で開く。
    - `/moratame-lp` と入力し、工程0の質問が出ることを確かめる。
    - `VERSION` に日時とコミットが入っていることを確かめる。
-3. Google Drive の `01_エージェント最新版/` に置く（Finder で `build/moratame-lp-{年月日時分}.zip` をコピーする）。前の zip は `01_エージェント最新版/過去の版/` に移し、`01_エージェント最新版/` には最新の1つだけを置く。
+3. Google Drive の `01_エージェント最新版/` に置く。**置き場所を設定してあれば、コミットのたびに自動で置かれる**（下の「Google Drive に自動で置く設定」）。前の zip は `01_エージェント最新版/過去の版/` に自動で移り、`01_エージェント最新版/` には最新の1つだけが残る。設定していないときは、Finder で `build/moratame-lp-{年月日時分}.zip` をコピーし、前の zip を手で `過去の版/` に移す。
 4. スタッフに知らせる。知らせる内容: 版（`VERSION`）と変わったこと。**作業中の案件は、そのフォルダの版のまま続けてよい**。新しい案件から新しい版を使う。
 
 ### zip に入らないもの
@@ -40,7 +40,7 @@
 - `.claude/rules/git-commit.md`（スタッフは git を使わない）
 - `docs/admin.md`（この文書）、`docs/admin-quickstart.md`、`docs/team-rollout.md`、`docs/feedback-log.md`
 - `feedback/`（このリポジトリで集めたフィードバック。zip には空の `feedback/` が入る）、`.claude/skills/feedback-triage/`
-- `tools/make-dist.sh`、`tools/update-template.sh`、`tools/collect-feedback.sh`、`tools/git-hooks/`
+- `tools/make-dist.sh`、`tools/publish-dist.sh`、`tools/update-template.sh`、`tools/collect-feedback.sh`、`tools/git-hooks/`
 
 入れるものを変えたいときは `tools/make-dist.sh` を直す。
 
@@ -53,6 +53,19 @@ git config core.hooksPath tools/git-hooks
 ```
 
 止めたいときは `git config --unset core.hooksPath`。フックは zip には入らない。
+
+### Google Drive に自動で置く設定
+
+置き場所を、この PC の git の設定に入れておくと、コミットのたびに zip が `01_エージェント最新版/` に置かれる（`tools/publish-dist.sh`。パスに会社のアカウント名が入るので、リポジトリのファイルには書かない）。
+
+```sh
+git config moratame.distDir "$HOME/Library/CloudStorage/GoogleDrive-（会社のアカウント）/共有ドライブ/design2/MOD_design/モラタメ商品概要LP_AIエージェント制作/01_エージェント最新版"
+```
+
+- 手で置き直すときは `bash tools/publish-dist.sh`（最後のコミットの zip を置く。`--working-tree` で作った試しの zip は置かない）。
+- Google Drive が開いていないときは置かずに知らせる（コミットはできる）。開いてから `bash tools/publish-dist.sh` を実行する。
+- 自動で置くのをやめるときは `git config --unset moratame.distDir`。
+- **コミットするとすぐスタッフに見える。** 試しの途中の変更はコミットしないか、いったん設定を外してからコミットする。
 
 ## テンプレートを取り込み直す
 
