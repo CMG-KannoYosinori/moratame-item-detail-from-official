@@ -14,7 +14,8 @@
 |---|---|---|
 | `template/00000html/dist/` | `00000html/dist/` | HTML・CSS（コンパイル済み）・JS |
 | `template/00000html/README.md` | `00000html/README.md` | 部品とクラス名の説明として読む。**SCSS・Live Sass の手順はこのリポジトリでは使わない**（CSS だけで運用する） |
-| `.claude/rules/` の `character-entities.md`・`html-charset.md`・`modern-bem.md` | `.claude/rules/` | 対象のパスだけ変えて写した |
+| `.claude/rules/` の `character-entities.md`・`html-charset.md` | `.claude/rules/` | 対象のパスだけ変えて写した |
+| `.claude/rules/modern-bem.md` | `.claude/rules/` | CSS で運用するこのリポジトリに関係する部分（命名、State、やってはいけないこと）だけを残し、例を案件のクラス名にした（2026-11-27） |
 | `.claude/rules/project-css.md`・`design-comp.md` | `.claude/rules/` | CSS で運用する形・SP 375px に書き直した |
 
 `src/`（SCSS）は写していない。案件のスタイルは `dist/styles/style.css` の最後に書く（`.claude/rules/project-css.md`）。

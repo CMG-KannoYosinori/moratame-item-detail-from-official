@@ -177,16 +177,18 @@ projects/{案件番号}/
 
 ### 5.5 コーディング規約
 
-ルールは [.claude/rules/](../.claude/rules/)（`projects/` の HTML・CSS を扱うときに自動で読み込まれる）。item-details-template のルールをもとに、CSS で運用する形・SP 375px に書き直した。主な内容は次のとおり。
+ルールは [.claude/rules/](../.claude/rules/)（`projects/` の HTML・CSS を扱うときに自動で読み込まれる）。item-details-template のルールをもとに、CSS で運用する形・SP 375px に書き直した。**細かい決まりはルールのファイルにだけ書き、ここには何がどこにあるかだけを書く**（同じことを2か所に書くと、片方だけ直したときに食い違うため）。
 
+| 内容 | ルール |
+|---|---|
+| 文字コード（UTF-8 で保存し、`<meta charset>` は書かない。埋め込み先は Shift_JIS のCMS（モラタメ）と UTF-8 のCMS（シェアフル）の両方） | [html-charset.md](../.claude/rules/html-charset.md) |
+| 記号は数値文字参照にする | [character-entities.md](../.claude/rules/character-entities.md) |
+| 案件専用の CSS の置き場所と書き方 | [project-css.md](../.claude/rules/project-css.md) |
+| クラス名の付け方（Modern BEM） | [modern-bem.md](../.claude/rules/modern-bem.md) |
+| カンプを見てから実装し、カンプにない要素や文言は足さない | [design-comp.md](../.claude/rules/design-comp.md) |
+| コミット（git で管理している管理者だけ） | [git-commit.md](../.claude/rules/git-commit.md) |
 
-- **文字コード:** ファイルは UTF-8 で保存し、`<meta charset>` は書かない。埋め込み先は Shift_JIS のCMS（モラタメ）と UTF-8 のCMS（シェアフル）の両方。
-- **記号:** ®、×、〜、① などは数値文字参照（`&#174;` など）で書く。`&reg;` のような名前付きの実体参照は使わない。CSSの `content` ではUnicodeエスケープを使う。
-- **命名:** クラス名には `p{案件番号}-` を付けた Modern BEM。孫要素（`__a__b`）は作らない。ある部品を親の部品から直接上書きしない。
-- **案件専用のCSS:** `style.css` の最後の区切りより下に、`.p{案件番号}-project` とその `__` 要素だけを書く。テンプレートの部品の CSS を案件のために書き換えない。
-- **リンク:** jQuery Mobile 対策で `data-role="none"` を付ける（テンプレートの例に合わせる）。
-- **カンプに忠実に:** カンプにない要素や文言は足さない。
-- **コミット:** git で管理しているとき（管理者）は、gitmojiを付け、意味ごとに分ける。
+リンクに `data-role="none"` を付ける（jQuery Mobile 対策。テンプレートの例に合わせる）ことなど、HTML の書き方の残りは `moratame-html` スキルにある。
 
 ## 6. 品質・制約
 
