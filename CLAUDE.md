@@ -27,6 +27,15 @@
 
 人向けの使い方は [docs/manual.md](docs/manual.md)（簡単マニュアルは [docs/quickstart.md](docs/quickstart.md)、管理者向けは docs/admin-quickstart.md）、修正の流れは [docs/revision-flow.md](docs/revision-flow.md)、フィードバックの流れは [docs/feedback-flow.md](docs/feedback-flow.md)。
 
+### スキルの読み方
+
+スキルとルールに書いてあることは、次の2つに分かれる。
+
+- **決まり（変えない）:** 成果物（content.md・blocks.md・カンプ・HTML・画像など）の中身・名前・置き場所、人の確認（✅）で止まること、表現の扱い（薬機法・景表法など）、`.claude/rules/` のルール。
+- **手順（目安）:** そこにたどり着くやり方（道具の呼び方、確かめ方、作業の順番）。今の道具で迷わないように書いたもの。同じ成果物を、より確かに・早く作れるやり方があれば変えてよい。変えたときは、何をなぜ変えたかを人に短く伝える。スキルを直したほうがよさそうなら `lp-feedback` で残す。
+
+道具の制約への回避策には「2026-11 時点」のように時点を書いてある。道具が変わって要らなくなっていれば、使わなくてよい。
+
 ## まず読むもの
 
 - [docs/requirements.md](docs/requirements.md) — 要件と工程（工程0〜5）。作業の決まりはすべてここにある
