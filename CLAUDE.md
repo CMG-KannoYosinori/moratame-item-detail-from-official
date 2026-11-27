@@ -80,6 +80,7 @@
 | Python を動かす | Mac は `python3`。Windows は `python`（なければ `py`）。最初に `python3 --version` などで、どれが動くか確かめてから使う |
 | コマンド | Bash（Windows の Claude Code では Git Bash）。`cp`・`mkdir -p`・`curl` などはどちらでも使える。Mac だけのコマンド（`sips`、`textutil`、`open` など）は使わない |
 | 画像の大きさを調べる | `tools/image_size.py` |
+| 画像を縮小・圧縮する | `tools/compress_images.py`（Chrome / Edge で動く。Pillow は要らない） |
 | Word・Excel・PowerPoint の文字を読む | `tools/doc_text.py`（Word の変更履歴とコメントも出る） |
 | HTML のスクリーンショット | `tools/screenshot.py`（Chrome、なければ Edge を自動で探す。Pillow は要らない） |
 | プレビューのサーバー | `tools/wireframe-server.py` |

@@ -26,7 +26,7 @@ Mac・Windows のどちらでも動きます。
 - Python 3（Mac は最初から入っている。Windows は python.org から入れる）。道具は Python の標準の機能だけで動く
 - Google Chrome または Microsoft Edge（HTML の確認でスクリーンショットを撮るのに使う）
 
-Node.js・npm・Pillow などは要りません（CSS は SCSS を使わずに直接書きます）。Mac だけのコマンドは使わず、`tools/` の Python の道具（`image_size.py`・`doc_text.py`・`screenshot.py`）を使います。
+Node.js・npm・Pillow などは要りません（CSS は SCSS を使わずに直接書きます）。Mac だけのコマンドは使わず、`tools/` の Python の道具（`image_size.py`・`compress_images.py`・`doc_text.py`・`screenshot.py`）を使います。
 
 ## 使い方（管理者）
 
@@ -91,6 +91,7 @@ Google Drive: 共有ドライブ/design2/MOD_design/モラタメ商品概要LP_A
 │   ├── preview.html          HTML を決めた幅（375px など）で表示する
 │   ├── screenshot.py         HTML を幅ごと・縦に分けて撮る（Chrome / Edge）
 │   ├── image_size.py         画像の大きさを調べる
+│   ├── compress_images.py    画像を縮小・圧縮する（Chrome / Edge）
 │   ├── doc_text.py           Word・Excel・PowerPoint の文字を取り出す
 │   ├── figma-upload.sh       素材を Figma に上げる
 │   ├── make-dist.sh          配布用の zip を作る（配布しない）
@@ -108,7 +109,8 @@ Google Drive: 共有ドライブ/design2/MOD_design/モラタメ商品概要LP_A
 projects/{案件番号}/
 ├── wireframe/   content.md（ブランドサイトの整理）、blocks.md（選んだブロックと商品）、wireframe.html
 ├── design/      承認したカンプの PNG（PC・SP）
-├── dist/        納品物（{案件番号}.html、images/、styles/style.css）
+├── source-images/  元の画像（ブランドサイト・Figma から取ったもの。圧縮する前）
+├── dist/        納品物（{案件番号}.html、images/（圧縮したもの）、styles/style.css）
 ├── changes.md   修正の記録
 └── revisions/   修正の回ごとの受け取ったファイル（request/）と直す前の版（before/）
 ```

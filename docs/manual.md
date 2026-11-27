@@ -147,6 +147,8 @@ Claude が Figma の URL を教えてくれます。「カンプ」ページに�
 
 Claude が HTML を作り、PC とスマホのスクリーンショットで確認結果を見せてくれます。気になるところを伝え、よければ「OK」と伝えます。
 
+画像は Claude が縮小・圧縮し、WebP にして `dist/images/` に入れます（1枚 300KB・合計 3MB くらいまでが目安）。元の画像は `source-images/` に残ります。画質が気になる画像があれば「KV の画質を上げて」のように頼めます。
+
 公開の作業（画像などのアップロード、CMS への貼り付け）は人が行います。Claude がやることの一覧を書いてくれます。
 
 ### 工程6: 修正が来たら（何回でも）
@@ -215,6 +217,7 @@ HTML を作った後に、メーカーから修正の依頼（戻し）が来る
 | 選んだブロックと商品 | `projects/{案件番号}/wireframe/blocks.md` |
 | デザインの画像 | `projects/{案件番号}/design/` |
 | 完成した HTML など | `projects/{案件番号}/dist/` |
+| 元の画像（圧縮する前） | `projects/{案件番号}/source-images/` |
 | 修正の記録 | `projects/{案件番号}/changes.md` |
 | 受け取った修正のファイル・修正前の版 | `projects/{案件番号}/revisions/round-{回の番号}/` |
 | 進み具合 | `projects/progress.md` |

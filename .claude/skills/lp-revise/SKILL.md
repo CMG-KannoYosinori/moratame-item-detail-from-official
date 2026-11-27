@@ -81,6 +81,7 @@ cp -R projects/{案件番号}/dist projects/{案件番号}/revisions/round-{N}/b
 - **blocks.md:** 外したブロックは行を消さずにチェックを外し、メモに「第N回: 〜のため外す」と書く。
 - **カンプ:** `figma-comp` スキルの決まりで直す（create_session、figma-use のスキルを読む）。該当するフレームやテキストだけを直し、全体を作り直さない。直したら、その部分だけスクリーンショットで確かめる。最後に `design/{案件番号}-pc.png`・`-sp.png` を書き出し直す。
 - **HTML:** `moratame-html` スキルの決まりで直す（案件の CSS は区切りより下、記号は数値文字参照など）。使わなくなった画像・CSS は消す。
+- **画像の差し替え:** 新しい画像は元のまま `source-images/` に置き、`tools/compress_images.py` でその画像だけを `dist/images/` に書き出す（`moratame-html` の「圧縮する」）。拡張子が変わったら HTML・CSS の参照も直す。
 
 ## 5. 確かめる
 
