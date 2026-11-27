@@ -38,7 +38,7 @@
 - `projects/` の中身（管理者の案件）。代わりに空の `projects/progress.md` が入る
 - `.git`、`.gitignore`、`build/`、`README.md`（リポジトリの説明。スタッフ向けは manual.md）
 - `.claude/rules/git-commit.md`（スタッフは git を使わない）
-- `docs/admin.md`（この文書）、`docs/admin-quickstart.md`、`docs/team-rollout.md`、`docs/feedback-log.md`
+- `docs/admin.md`（この文書）、`docs/admin-quickstart.md`、`docs/team-rollout.md`、`docs/feedback-log.md`、`docs/ringi-material.md`・`docs/ringi-material.pdf`
 - `feedback/`（このリポジトリで集めたフィードバック。zip には空の `feedback/` が入る）、`.claude/skills/feedback-triage/`
 - `tools/make-dist.sh`、`tools/publish-dist.sh`、`tools/update-template.sh`、`tools/collect-feedback.sh`、`tools/git-hooks/`
 
